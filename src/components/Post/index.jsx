@@ -1,6 +1,7 @@
 import { formatDistance } from "date-fns";
 import { it } from "date-fns/locale";
 import styles from "./Post.module.scss";
+import { format } from "date-fns";
 
 const Post = (props) => {
   const data = props.data || {
@@ -28,6 +29,9 @@ const Post = (props) => {
             addSuffix: true,
             locale: it,
           })}
+        </small>
+        <small>
+        {format(new Date(data.date), ' hh:mm:ss')}
         </small>
       </p>
       <p>{data.text}</p>
