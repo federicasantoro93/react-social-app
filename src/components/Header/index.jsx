@@ -10,7 +10,7 @@ const Header = (props) => {
       <nav>
         <ul>
           {links.map((item, index) => (
-            <li>
+            <li key={index}>
               <a href={item.link}>{item.label}</a>
             </li>
           ))}
