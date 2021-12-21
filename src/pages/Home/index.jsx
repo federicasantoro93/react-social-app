@@ -13,6 +13,9 @@ const messages = [];
 
 const posts = [];
 
+const text= "Il post è stato creato!";
+const bannerbackcolor= "red";
+
 const Home = () => {
   const [friendsPreview, setFriendsPreview] = useState(friends);
   const [allPosts, setAllPosts] = useState(posts);
@@ -39,12 +42,12 @@ const Home = () => {
     // ]).then((data) => console.log(data[0]))
   }, []);
 
-  const text= "Il post è stato creato!";
+  
    
   return (
     <section className={styles.home}>
       <h3>Bevenuto utente</h3>
-      {<Banner text={text}/>}
+      {<Banner text={text}  bannerbackcolor={bannerbackcolor}/>}
       <div className={styles.grid}>
         <aside>
           {friendsPreview.map((friend, index) => (
