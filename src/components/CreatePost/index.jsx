@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { httpPOST } from "../../libs/http";
 import styles from "./CreatePost.module.scss";
-import Banner from "./../Banner/index"
+
 
 const CreatePost = () => {
   const [authorInput, setAuthorInput] = useState("");
