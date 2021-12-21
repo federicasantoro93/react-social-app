@@ -1,5 +1,4 @@
 import { formatDistance } from "date-fns";
-import { format } from "date-fns";
 import { it } from "date-fns/locale";
 import styles from "./MessagePreview.module.scss";
 
@@ -19,9 +18,6 @@ const MessagePreview = (props) => {
             addSuffix: true,
             locale: it,
           })}
-        </small>
-        <small>
-        {format(new Date(data.date), ' kk:mm')}
         </small>
       </p>
       <p>{data.text}</p>

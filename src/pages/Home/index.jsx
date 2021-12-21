@@ -3,7 +3,9 @@ import { FriendPreview } from "../../components/FriendPreview";
 import { MessagePreview } from "../../components/MessagePreview";
 import { Post } from "../../components/Post";
 import { http } from "./../../libs/http";
+import { Link } from "react-router-dom";
 import styles from "./Home.module.scss";
+import Banner from "../../components/Banner";
 
 const friends = [];
 
@@ -28,7 +30,7 @@ const Home = () => {
 
     http("/friends?_limit=4").then((data) => setFriendsPreview(data));
     http("/messages?_limit=4").then((data) => setMessagesPreview(data));
-    http("/posts").then((data) => setAllPosts(data));
+    http("/posts").then((data) => setAllPosts(data.reverse()));
 
     // Promise.all([
     //   http("/friends?_limit=4"),
@@ -37,9 +39,12 @@ const Home = () => {
     // ]).then((data) => console.log(data[0]))
   }, []);
 
+  const text= "Il post è stato creato!";
+   
   return (
     <section className={styles.home}>
       <h3>Bevenuto utente</h3>
+      {<Banner text={text}/>}
       <div className={styles.grid}>
         <aside>
           {friendsPreview.map((friend, index) => (
@@ -47,6 +52,11 @@ const Home = () => {
           ))}
         </aside>
         <main>
+          <Link to="/new-post">
+            <button className={styles.createPostBtn}>
+              + Create a new post!
+            </button>
+          </Link>
           {allPosts.map((post, index) => (
             <Post key={index} data={post} />
           ))}
